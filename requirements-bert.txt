@@ -1,6 +1,6 @@
-# Optional: only needed to regenerate BERT embeddings from concept labels.
-# Base reproduction does not require these; precomputed embeddings are shipped
-# under data/intermediate/.
+# Optional: only needed to REGENERATE the BERT embeddings from concept labels.
+# Base reproduction does not require these; the precomputed embeddings are
+# shipped under data/intermediate/bert_embeddings.npz.
+# Recorded generation run used transformers 5.12.1 and torch 2.11.0+cpu.
 transformers>=4.30.0
-torch>=2.0.0,<3.0.0
-sentence-transformers>=2.2.0
+torch>=2.0.0

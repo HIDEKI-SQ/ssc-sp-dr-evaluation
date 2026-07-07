@@ -23,6 +23,11 @@ metrics:
   k_nn: 10
   k_clu: 4
 
+projection:
+  method: PCA                  # semantic_projection = 2D PCA of the embeddings
+  n_components: 2
+  random_state: 0
+
 embeddings:
   synthetic:
     dim: 128                   # standard normal

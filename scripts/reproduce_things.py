@@ -50,16 +50,22 @@ def subsample(x: np.ndarray, n: int, seed: int):
 
 
 def run_dr(d_sem: np.ndarray, seed: int) -> dict:
+    """Run the three DR methods with hyperparameters taken from config."""
     from sklearn.manifold import MDS, TSNE
     import umap
+    dm = CFG["dr_methods"]
     Y = {}
+    m = dm["MDS"]
     Y["MDS"] = MDS(n_components=2, dissimilarity="precomputed", random_state=seed,
-                   n_init=4, max_iter=300, normalized_stress="auto").fit_transform(d_sem)
+                   n_init=m["n_init"], max_iter=m["max_iter"],
+                   normalized_stress=m["normalized_stress"]).fit_transform(d_sem)
+    t = dm["tSNE"]
     Y["tSNE"] = TSNE(n_components=2, metric="precomputed", random_state=seed,
-                     init="random", perplexity=30,
-                     learning_rate="auto").fit_transform(d_sem)
+                     init=t["init"], perplexity=t["perplexity"],
+                     n_iter=t["n_iter"], learning_rate=t["learning_rate"]).fit_transform(d_sem)
+    u = dm["UMAP"]
     Y["UMAP"] = umap.UMAP(n_components=2, metric="precomputed", random_state=seed,
-                          n_neighbors=15, min_dist=0.1).fit_transform(d_sem)
+                          n_neighbors=u["n_neighbors"], min_dist=u["min_dist"]).fit_transform(d_sem)
     return Y
 
 

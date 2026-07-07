@@ -58,12 +58,14 @@ def run():
     from sklearn.decomposition import PCA
     import umap
 
+    dm = CFG["dr_methods"]
+    t, u = dm["tSNE"], dm["UMAP"]
     Y = {
         "tSNE": TSNE(n_components=2, metric="euclidean", random_state=seed,
-                     init="random", perplexity=30, n_iter=1000,
-                     learning_rate="auto").fit_transform(X),
+                     init=t["init"], perplexity=t["perplexity"], n_iter=t["n_iter"],
+                     learning_rate=t["learning_rate"]).fit_transform(X),
         "UMAP": umap.UMAP(n_components=2, metric="euclidean", random_state=seed,
-                          n_neighbors=15, min_dist=0.1).fit_transform(X),
+                          n_neighbors=u["n_neighbors"], min_dist=u["min_dist"]).fit_transform(X),
         "PCA": PCA(n_components=2, random_state=seed).fit_transform(X),
     }
 

@@ -1,5 +1,6 @@
 """SSC-SP measurement library."""
 
+from . import deterministic  # enforce BLAS thread settings before metric imports
 from .metrics import (
     SPComponents,
     ssc,

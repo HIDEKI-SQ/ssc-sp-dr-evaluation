@@ -83,15 +83,16 @@ def semantic_noise():
     """Negative control: perturbing the embedding leaves SP and SSC unaffected."""
     rng = np.random.default_rng(SEED + 1)
     base = layouts.grid_layout(int(round(np.sqrt(N))))
+    # SP compares base to itself here, so it is constant across trials: compute once.
+    sp_const = M.sp_total(base, base, k=K, n_clusters=KC, random_state=SEED)
     rows = []
     for sigma in CFG["semantic_noise"]["sigma_values"]:
-        sp, ssc = [], []
+        ssc = []
         for _ in range(N_TRIALS):
             sem = _semantic(rng)
             sem_noisy = sem + rng.normal(0, sigma, size=sem.shape)
-            sp.append(M.sp_total(base, base, k=K, n_clusters=KC, random_state=SEED))
             ssc.append(M.ssc(_dist(sem_noisy), base))
-        rows.append(dict(sigma=sigma, sp_mean=np.mean(sp),
+        rows.append(dict(sigma=sigma, sp_mean=sp_const,
                          ssc_mean=np.mean(ssc), ssc_std=np.std(ssc, ddof=1)))
     return pd.DataFrame(rows)
 

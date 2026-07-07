@@ -35,9 +35,9 @@ dependencies = [
 
 [project.optional-dependencies]
 bert = [
-    "transformers>=4.30.0,<5.0.0",
-    "torch>=2.0.0,<3.0.0",
-    "sentence-transformers>=2.2.0",
+    # Recorded generation run: transformers 5.12.1, torch 2.11.0+cpu.
+    "transformers>=4.30.0",
+    "torch>=2.0.0",
 ]
 test = ["pytest==7.4.0"]
 

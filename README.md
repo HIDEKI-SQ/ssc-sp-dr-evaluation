@@ -26,25 +26,61 @@ Two reference modes:
 
 ## Reproduce
 
+Install, pinning the single-threaded BLAS settings the deterministic execution
+contract expects:
+
 ```bash
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=1
 pip install -r requirements.txt
 pip install -e .
-
-python scripts/run_synthetic.py       # perturbation experiments (Figure 1)
-python scripts/run_baseline_null.py   # random-pairing null for SSC (Figure 2)
-python scripts/run_lambda.py          # value-coupling sweep (Figure 3)
-python scripts/reproduce_things.py    # THINGS demonstration (Table 1, Figure 4)
-python scripts/reproduce_mnist.py     # MNIST demonstration
-python scripts/run_robustness.py      # robustness checks (supplementary)
-python scripts/make_figures.py        # render all figures from result CSVs
-python tables/generate_hyperparameter_table.py   # hyperparameter table from config/
-
-pytest -q                             # metric definitions, determinism, banned terms
 ```
 
+### 1. Quick verification from shipped files (seconds)
+
+No external data or network needed. Checks the library, the shipped Table 1
+values, banned terms, and renders figures from the shipped result CSVs.
+
+```bash
+pytest -q
+python tables/generate_hyperparameter_table.py
+python scripts/make_figures.py
+```
+
+`tests/test_reproduce_table1.py` pins the values in the shipped THINGS summary
+CSV; it is a value-fixing test, not a full reproduction from SPoSE.
+
+### 2. Full synthetic reproduction (minutes)
+
+Regenerates Figures 1-3 from scratch. Runtime scales with `n_trials` in the
+configs (200 by default) and the K-means calls inside SP; expect a few minutes.
+
+```bash
+python scripts/run_baseline_null.py   # random-pairing null for SSC (Figure 2)
+python scripts/run_synthetic.py       # perturbation experiments (Figure 1)
+python scripts/run_lambda.py          # value-coupling sweep (Figure 3; needs BERT npz)
+python scripts/run_robustness.py      # robustness checks (supplementary)
+```
+
+The BERT side of Figure 3 uses the shipped `data/intermediate/bert_embeddings.npz`.
+
+### 3. Full applied-data reproduction (external data required)
+
+- **THINGS** (Table 1, Figure 4): requires the SPoSE embedding file. Download
+  `embedding00_epoch0500.txt` from https://osf.io/z2784/ into `data/things/`
+  (see `data/things/README.md`), then:
+  ```bash
+  python scripts/reproduce_things.py --embedding data/things/embedding00_epoch0500.txt
+  ```
+- **MNIST**: requires network access (OpenML via `fetch_openml`):
+  ```bash
+  python scripts/reproduce_mnist.py
+  ```
+
 All hyperparameters live in `config/*.yaml` and are the single source for the
-hyperparameter table. Random seeds, reference-distance definitions, and DR
-settings are recorded there.
+hyperparameter table and for the DR calls in the reproduction scripts. Random
+seeds, reference-distance definitions, and DR settings are recorded there.
 
 ## Data
 

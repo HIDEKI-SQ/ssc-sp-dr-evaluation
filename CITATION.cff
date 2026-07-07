@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SSC-SP: Semantic-spatial alignment and decomposed structural preservation for DR visualization evaluation"
+authors:
+  - given-names: "Hideki"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/HIDEKI-SQ/ssc-sp-dr-evaluation"

@@ -1,0 +1,6 @@
+# Optional: only needed to regenerate BERT embeddings from concept labels.
+# Base reproduction does not require these; precomputed embeddings are shipped
+# under data/intermediate/.
+transformers>=4.30.0
+torch>=2.0.0,<3.0.0
+sentence-transformers>=2.2.0

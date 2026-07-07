@@ -1,0 +1,41 @@
+# MNIST demonstration.
+# Reference mode: reference-space. The reference distance is pixel-space
+# input-feature distance -- NOT semantic distance in the same sense as THINGS.
+# Describe it as "input-feature distance" / "reference-space distance" in text.
+#
+# All DR hyperparameters are specified explicitly to avoid scikit-learn default
+# drift (the t-SNE init default changed across versions). Recorded environment:
+# scikit-learn 1.3.0.
+
+dataset: MNIST
+reference_mode: reference
+
+reference_representation: pixel_784d
+reference_distance: euclidean          # input-feature distance
+semantic: false                        # reference is not semantic
+
+sampling:
+  n_samples: 1000                      # 1,000 test images
+  source: test_set
+  sampling_seed: 20250124
+
+metrics:
+  k_nn: 10
+  k_clu: 10                            # ten digit classes
+  sp_components: [sp_adj, sp_ord, sp_clu]
+
+dr_methods:
+  tSNE:
+    metric: euclidean                  # on pixel vectors
+    perplexity: 30
+    init: random
+    n_iter: 1000
+    learning_rate: auto
+    random_state: 20250124
+  UMAP:
+    metric: euclidean
+    n_neighbors: 15
+    min_dist: 0.1
+    random_state: 20250124
+  PCA:
+    n_components: 2

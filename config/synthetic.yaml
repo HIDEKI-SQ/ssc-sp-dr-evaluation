@@ -1,0 +1,48 @@
+# Synthetic perturbation experiments (Figure 1) and negative control.
+# Reference mode: layout-preservation (SP computed against the unperturbed
+# baseline layout; SP = 1.0 at zero perturbation by construction).
+#
+# NOTE ON RE-EXECUTION: the original manuscript figures were generated with the
+# earlier core implementation (whole-graph symmetrized Jaccard, k=4). This
+# package recomputes them with the manuscript definition (per-item Jaccard,
+# k=10), so SP_adj absolute values change. Qualitative patterns are expected to
+# hold. See docs/legacy_mapping.md for the pre-re-execution reference values.
+
+dataset: synthetic
+reference_mode: layout
+
+generation:
+  n_items: 64
+  dim: 128                     # semantic embedding dimensionality (standard normal)
+  spatial_domain: unit_square  # [0, 1]^2
+  n_trials: 200
+  seed: 500                    # recorded run seed for perturbation experiments
+
+metrics:
+  k_nn: 10                     # unified to manuscript default (was 4 in legacy core)
+  k_clu: 4
+  sp_components: [sp_adj, sp_ord, sp_clu]
+
+coordinate_noise:              # Figure 1a
+  sigma_values: [0.0, 0.1, 0.3, 0.5, 0.7]
+
+metric_vs_topology:            # Figure 1b
+  rotation_deg: [0, 30, 60, 90, 120, 180]
+  scale_pairs: [[0.5, 2.0], [2.0, 0.5], [1.0, 1.0]]
+  shear_k: [0.0, 0.3, 0.7, 1.0]
+  rewiring_p: [0.1, 0.3, 0.5, 0.7]
+  matched_intensity: 0.7       # level at which metric vs topology is compared
+
+semantic_noise:                # negative control
+  sigma_values: [0.0, 0.1, 0.3, 0.5, 0.7]
+
+layouts: [grid, line, circle, random]
+
+baseline_null:                 # Figure 2 (random-pairing null baseline for SSC)
+  n_items: 64
+  dim: 128                     # standard normal embeddings
+  spatial: unit_square         # uniform [0, 1]^2
+  n_trials: 1000
+  seed: 42
+  distance: euclidean          # reference-space distance for SSC
+  equivalence_delta: 0.10      # TOST bounds +/- 0.10

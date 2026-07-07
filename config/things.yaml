@@ -1,0 +1,48 @@
+# THINGS demonstration (Table 1, Figure 4).
+# Reference mode: reference-space (SP computed against the high-dimensional
+# SPoSE embedding).
+#
+# Each seed controls BOTH the 500-concept subsample selection AND the DR
+# initialization. Reported values are means +/- SD across three independent
+# subsampling-and-DR runs (not a fixed sample with three DR restarts).
+
+dataset: THINGS
+reference_mode: reference
+
+reference_representation: SPoSE_120d   # human odd-one-out judgments (behavioral)
+reference_distance: euclidean          # Euclidean in the 120-d SPoSE space
+semantic: true                         # reference is genuinely semantic/behavioral
+
+sampling:
+  n_concepts: 500
+  mode: per_seed                       # subsample is re-drawn for each seed
+  seeds: [20250124, 20250125, 20250126]
+
+metrics:
+  k_nn:
+    default: 10
+    sensitivity: [5, 10, 20]
+  k_clu: 10                            # dataset-structure choice for applied demo
+  sp_components: [sp_adj, sp_ord, sp_clu]
+
+dr_methods:
+  MDS:
+    dissimilarity: precomputed         # input is the SPoSE distance matrix
+    n_init: 4
+    max_iter: 300
+    normalized_stress: auto
+    random_state: per_seed
+  tSNE:
+    metric: precomputed                # run on the SPoSE distance matrix (D_sem)
+    input: distance_matrix
+    perplexity: 30
+    n_iter: 1000
+    learning_rate: auto
+    init: random
+    random_state: per_seed
+  UMAP:
+    metric: precomputed
+    input: distance_matrix
+    n_neighbors: 15
+    min_dist: 0.1
+    random_state: per_seed

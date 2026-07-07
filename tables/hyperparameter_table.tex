@@ -1,0 +1,84 @@
+\begin{table}[h]
+\centering
+\caption{Hyperparameters and reproducibility settings.}
+\begin{tabular}{lll}
+\toprule
+Dataset & Parameter & Value \\
+\midrule
+lambda\_sweep & generation.n\_items & 64 \\
+lambda\_sweep & generation.n\_trials & 200 \\
+lambda\_sweep & generation.seed & 600 \\
+lambda\_sweep & generation.baseline\_layout & circle \\
+lambda\_sweep & generation.lambda\_values & 0.0, 0.2, 0.4, 0.6, 0.8, 1.0 \\
+lambda\_sweep & metrics.k\_nn & 10 \\
+lambda\_sweep & metrics.k\_clu & 4 \\
+lambda\_sweep & embeddings.synthetic.dim & 128 \\
+lambda\_sweep & embeddings.bert.dim & 768 \\
+lambda\_sweep & embeddings.bert.model\_name & bert-base-uncased \\
+lambda\_sweep & embeddings.bert.pooling & cls\_token \\
+lambda\_sweep & embeddings.bert.n\_items & 50 \\
+lambda\_sweep & embeddings.bert.seed & 601 \\
+lambda\_sweep & embeddings.bert.word\_shuffling & True \\
+lambda\_sweep & embeddings.bert.transformers\_version & 5.12.1 \\
+lambda\_sweep & embeddings.bert.torch\_version & 2.11.0+cpu \\
+lambda\_sweep & embeddings.bert.sha256 & 3015b027dd48b3c80c7d29038fc1f68d18c27d5a0030ef866c0fe7e534b25eb9 \\
+lambda\_sweep & embeddings.bert.source & precomputed \\
+MNIST & sampling.n\_samples & 1000 \\
+MNIST & sampling.source & test\_set \\
+MNIST & sampling.sampling\_seed & 20250124 \\
+MNIST & metrics.k\_nn & 10 \\
+MNIST & metrics.k\_clu & 10 \\
+MNIST & metrics.sp\_components & sp\_adj, sp\_ord, sp\_clu \\
+MNIST & dr\_methods.tSNE.metric & euclidean \\
+MNIST & dr\_methods.tSNE.perplexity & 30 \\
+MNIST & dr\_methods.tSNE.init & random \\
+MNIST & dr\_methods.tSNE.n\_iter & 1000 \\
+MNIST & dr\_methods.tSNE.learning\_rate & auto \\
+MNIST & dr\_methods.tSNE.random\_state & 20250124 \\
+MNIST & dr\_methods.UMAP.metric & euclidean \\
+MNIST & dr\_methods.UMAP.n\_neighbors & 15 \\
+MNIST & dr\_methods.UMAP.min\_dist & 0.1 \\
+MNIST & dr\_methods.UMAP.random\_state & 20250124 \\
+MNIST & dr\_methods.PCA.n\_components & 2 \\
+synthetic & generation.n\_items & 64 \\
+synthetic & generation.dim & 128 \\
+synthetic & generation.spatial\_domain & unit\_square \\
+synthetic & generation.n\_trials & 200 \\
+synthetic & generation.seed & 500 \\
+synthetic & metrics.k\_nn & 10 \\
+synthetic & metrics.k\_clu & 4 \\
+synthetic & metrics.sp\_components & sp\_adj, sp\_ord, sp\_clu \\
+synthetic & coordinate\_noise.sigma\_values & 0.0, 0.1, 0.3, 0.5, 0.7 \\
+synthetic & metric\_vs\_topology.rotation\_deg & 0, 30, 60, 90, 120, 180 \\
+synthetic & metric\_vs\_topology.scale\_pairs & [0.5, 2.0], [2.0, 0.5], [1.0, 1.0] \\
+synthetic & metric\_vs\_topology.shear\_k & 0.0, 0.3, 0.7, 1.0 \\
+synthetic & metric\_vs\_topology.rewiring\_p & 0.1, 0.3, 0.5, 0.7 \\
+synthetic & metric\_vs\_topology.matched\_intensity & 0.7 \\
+synthetic & semantic\_noise.sigma\_values & 0.0, 0.1, 0.3, 0.5, 0.7 \\
+THINGS & sampling.n\_concepts & 500 \\
+THINGS & sampling.mode & per\_seed \\
+THINGS & sampling.seeds & 20250124, 20250125, 20250126 \\
+THINGS & metrics.k\_nn.default & 10 \\
+THINGS & metrics.k\_nn.sensitivity & 5, 10, 20 \\
+THINGS & metrics.k\_clu & 10 \\
+THINGS & metrics.sp\_components & sp\_adj, sp\_ord, sp\_clu \\
+THINGS & dr\_methods.MDS.dissimilarity & precomputed \\
+THINGS & dr\_methods.MDS.n\_init & 4 \\
+THINGS & dr\_methods.MDS.max\_iter & 300 \\
+THINGS & dr\_methods.MDS.normalized\_stress & auto \\
+THINGS & dr\_methods.MDS.random\_state & per\_seed \\
+THINGS & dr\_methods.tSNE.metric & precomputed \\
+THINGS & dr\_methods.tSNE.input & distance\_matrix \\
+THINGS & dr\_methods.tSNE.perplexity & 30 \\
+THINGS & dr\_methods.tSNE.n\_iter & 1000 \\
+THINGS & dr\_methods.tSNE.learning\_rate & auto \\
+THINGS & dr\_methods.tSNE.init & random \\
+THINGS & dr\_methods.tSNE.random\_state & per\_seed \\
+THINGS & dr\_methods.UMAP.metric & precomputed \\
+THINGS & dr\_methods.UMAP.input & distance\_matrix \\
+THINGS & dr\_methods.UMAP.n\_neighbors & 15 \\
+THINGS & dr\_methods.UMAP.min\_dist & 0.1 \\
+THINGS & dr\_methods.UMAP.random\_state & per\_seed \\
+\bottomrule
+\end{tabular}
+\end{table}

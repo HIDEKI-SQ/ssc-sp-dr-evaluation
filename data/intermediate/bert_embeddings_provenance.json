@@ -1,0 +1,12 @@
+{
+  "file": "bert_embeddings.npz",
+  "model_name": "bert-base-uncased",
+  "pooling": "cls_token",
+  "seed": 601,
+  "n_items": 50,
+  "dim": 768,
+  "transformers_version": "5.12.1",
+  "torch_version": "2.11.0+cpu",
+  "sha256_embeddings": "3015b027dd48b3c80c7d29038fc1f68d18c27d5a0030ef866c0fe7e534b25eb9",
+  "note": "Generated on Colab. Manuscript text should read BERT-base ([CLS] token), not Sentence-BERT."
+}

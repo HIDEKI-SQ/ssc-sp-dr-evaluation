@@ -1,0 +1,75 @@
+dataset,parameter,value
+lambda_sweep,generation.n_items,64
+lambda_sweep,generation.n_trials,200
+lambda_sweep,generation.seed,600
+lambda_sweep,generation.baseline_layout,circle
+lambda_sweep,generation.lambda_values,"0.0, 0.2, 0.4, 0.6, 0.8, 1.0"
+lambda_sweep,metrics.k_nn,10
+lambda_sweep,metrics.k_clu,4
+lambda_sweep,embeddings.synthetic.dim,128
+lambda_sweep,embeddings.bert.dim,768
+lambda_sweep,embeddings.bert.model_name,bert-base-uncased
+lambda_sweep,embeddings.bert.pooling,cls_token
+lambda_sweep,embeddings.bert.n_items,50
+lambda_sweep,embeddings.bert.seed,601
+lambda_sweep,embeddings.bert.word_shuffling,True
+lambda_sweep,embeddings.bert.transformers_version,5.12.1
+lambda_sweep,embeddings.bert.torch_version,2.11.0+cpu
+lambda_sweep,embeddings.bert.sha256,3015b027dd48b3c80c7d29038fc1f68d18c27d5a0030ef866c0fe7e534b25eb9
+lambda_sweep,embeddings.bert.source,precomputed
+MNIST,sampling.n_samples,1000
+MNIST,sampling.source,test_set
+MNIST,sampling.sampling_seed,20250124
+MNIST,metrics.k_nn,10
+MNIST,metrics.k_clu,10
+MNIST,metrics.sp_components,"sp_adj, sp_ord, sp_clu"
+MNIST,dr_methods.tSNE.metric,euclidean
+MNIST,dr_methods.tSNE.perplexity,30
+MNIST,dr_methods.tSNE.init,random
+MNIST,dr_methods.tSNE.n_iter,1000
+MNIST,dr_methods.tSNE.learning_rate,auto
+MNIST,dr_methods.tSNE.random_state,20250124
+MNIST,dr_methods.UMAP.metric,euclidean
+MNIST,dr_methods.UMAP.n_neighbors,15
+MNIST,dr_methods.UMAP.min_dist,0.1
+MNIST,dr_methods.UMAP.random_state,20250124
+MNIST,dr_methods.PCA.n_components,2
+synthetic,generation.n_items,64
+synthetic,generation.dim,128
+synthetic,generation.spatial_domain,unit_square
+synthetic,generation.n_trials,200
+synthetic,generation.seed,500
+synthetic,metrics.k_nn,10
+synthetic,metrics.k_clu,4
+synthetic,metrics.sp_components,"sp_adj, sp_ord, sp_clu"
+synthetic,coordinate_noise.sigma_values,"0.0, 0.1, 0.3, 0.5, 0.7"
+synthetic,metric_vs_topology.rotation_deg,"0, 30, 60, 90, 120, 180"
+synthetic,metric_vs_topology.scale_pairs,"[0.5, 2.0], [2.0, 0.5], [1.0, 1.0]"
+synthetic,metric_vs_topology.shear_k,"0.0, 0.3, 0.7, 1.0"
+synthetic,metric_vs_topology.rewiring_p,"0.1, 0.3, 0.5, 0.7"
+synthetic,metric_vs_topology.matched_intensity,0.7
+synthetic,semantic_noise.sigma_values,"0.0, 0.1, 0.3, 0.5, 0.7"
+THINGS,sampling.n_concepts,500
+THINGS,sampling.mode,per_seed
+THINGS,sampling.seeds,"20250124, 20250125, 20250126"
+THINGS,metrics.k_nn.default,10
+THINGS,metrics.k_nn.sensitivity,"5, 10, 20"
+THINGS,metrics.k_clu,10
+THINGS,metrics.sp_components,"sp_adj, sp_ord, sp_clu"
+THINGS,dr_methods.MDS.dissimilarity,precomputed
+THINGS,dr_methods.MDS.n_init,4
+THINGS,dr_methods.MDS.max_iter,300
+THINGS,dr_methods.MDS.normalized_stress,auto
+THINGS,dr_methods.MDS.random_state,per_seed
+THINGS,dr_methods.tSNE.metric,precomputed
+THINGS,dr_methods.tSNE.input,distance_matrix
+THINGS,dr_methods.tSNE.perplexity,30
+THINGS,dr_methods.tSNE.n_iter,1000
+THINGS,dr_methods.tSNE.learning_rate,auto
+THINGS,dr_methods.tSNE.init,random
+THINGS,dr_methods.tSNE.random_state,per_seed
+THINGS,dr_methods.UMAP.metric,precomputed
+THINGS,dr_methods.UMAP.input,distance_matrix
+THINGS,dr_methods.UMAP.n_neighbors,15
+THINGS,dr_methods.UMAP.min_dist,0.1
+THINGS,dr_methods.UMAP.random_state,per_seed

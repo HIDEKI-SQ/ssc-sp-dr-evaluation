@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate the BERT embeddings used by the value-coupling sweep.
 
-Optional: base reproduction ships the precomputed embeddings at
-data/intermediate/bert_embeddings.npz. This script reproduces them from the 50
-concept labels using bert-base-uncased [CLS]-token embeddings (seed 601),
-matching the recorded run. Requires requirements-bert.txt (transformers, torch).
+Optional. Base reproduction ships the precomputed embeddings at
+data/intermediate/bert_embeddings.npz and does not need this script. This
+regenerates them from the 50 concept labels using bert-base-uncased [CLS]-token
+embeddings (seed 601). Bitwise reproduction of the shipped embedding is not
+guaranteed across transformers/torch versions; the recorded generation run used
+transformers 5.12.1 and torch 2.11.0+cpu. Requires requirements-bert.txt.
 
 It is NOT Sentence-BERT: single-word [CLS] pooling from bert-base-uncased.
 """

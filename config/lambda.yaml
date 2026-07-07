@@ -4,8 +4,8 @@
 # circle arrangement (equal angular spacing) ensuring high initial SP.
 #
 # The monotonic trade-off is imposed by construction; this is a controlled
-# synthetic stress test under imposed coupling, not evidence of empirical
-# independence or of a natural relationship in real datasets.
+# synthetic stress test under imposed coupling, not evidence of a general
+# empirical relationship in real datasets.
 #
 # Reference mode: layout-preservation.
 

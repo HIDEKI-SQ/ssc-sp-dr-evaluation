@@ -51,10 +51,13 @@ python scripts/make_figures.py
 `tests/test_reproduce_table1.py` pins the values in the shipped THINGS summary
 CSV; it is a value-fixing test, not a full reproduction from SPoSE.
 
-### 2. Full synthetic reproduction (minutes)
+### 2. Full synthetic reproduction (several minutes to tens of minutes)
 
 Regenerates Figures 1-3 from scratch. Runtime scales with `n_trials` in the
-configs (200 by default) and the K-means calls inside SP; expect a few minutes.
+configs (200 by default) and the K-means calls inside SP, and depends on CPU and
+BLAS configuration; it may take several minutes to tens of minutes. For a quick
+check instead, run the pytest suite and `make_figures.py` from the shipped CSVs
+(section 1).
 
 ```bash
 python scripts/run_baseline_null.py   # random-pairing null for SSC (Figure 2)
@@ -90,8 +93,11 @@ See `data/things/README.md` for the exact filename and steps.
 
 The BERT embedding used in the value-coupling sweep is shipped precomputed under
 `data/intermediate/` so that base reproduction runs without `torch` or
-`transformers`. To regenerate it, install `requirements-bert.txt` and run
-`scripts/prepare_bert_embeddings.py`.
+`transformers`, which is the intended path. Regenerating it is optional: install
+`requirements-bert.txt` and run `scripts/prepare_bert_embeddings.py`. Bitwise
+reproduction of the shipped embedding is not guaranteed across transformers/torch
+versions; the recorded generation run used transformers 5.12.1 and torch
+2.11.0+cpu (see `data/intermediate/bert_embeddings_provenance.json`).
 
 ## Determinism
 

@@ -6,6 +6,9 @@ lambda_sweep,generation.baseline_layout,circle
 lambda_sweep,generation.lambda_values,"0.0, 0.2, 0.4, 0.6, 0.8, 1.0"
 lambda_sweep,metrics.k_nn,10
 lambda_sweep,metrics.k_clu,4
+lambda_sweep,projection.method,PCA
+lambda_sweep,projection.n_components,2
+lambda_sweep,projection.random_state,0
 lambda_sweep,embeddings.synthetic.dim,128
 lambda_sweep,embeddings.bert.dim,768
 lambda_sweep,embeddings.bert.model_name,bert-base-uncased

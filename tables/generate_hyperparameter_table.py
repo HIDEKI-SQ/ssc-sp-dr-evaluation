@@ -34,6 +34,7 @@ def collect_rows() -> list[tuple[str, str, str]]:
         cfg = yaml.safe_load(path.read_text())
         dataset = cfg.get("dataset", path.stem)
         for section in ("sampling", "generation", "metrics", "dr_methods",
+                        "projection",
                         "coordinate_noise", "metric_vs_topology",
                         "semantic_noise", "embeddings"):
             if section in cfg:

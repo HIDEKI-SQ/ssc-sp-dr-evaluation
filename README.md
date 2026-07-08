@@ -85,6 +85,22 @@ All hyperparameters live in `config/*.yaml` and are the single source for the
 hyperparameter table and for the DR calls in the reproduction scripts. Random
 seeds, reference-distance definitions, and DR settings are recorded there.
 
+### 4. Regenerate the manuscript figures (from shipped result files)
+
+The multi-panel manuscript figures and the four supplementary figures are written
+to `figures/` from the result CSVs in `data/results/`:
+
+```
+python scripts/make_manuscript_figures.py   # Fig. 1-4 (multi-panel)
+python scripts/make_supplementary_figures.py  # Supp. Fig. S1-S3
+python scripts/make_figure_s4.py              # Supp. Fig. S4 (from s4_sensitivity.json)
+```
+
+`make_manuscript_figures.py` also computes the baseline-null generalization sweep
+used in Fig. 2b and writes `data/results/fig2b_generalization.csv`. Supplementary
+Fig. S4 is generated from `data/results/s4_sensitivity.json`, the THINGS
+neighborhood-size / sample-size sensitivity run under the pinned `umap-learn==0.5.12`.
+
 ## Data
 
 The THINGS SPoSE concept embedding is not redistributed here. Download it from
@@ -109,4 +125,7 @@ Bitwise identity across all environments is not guaranteed.
 ## Citation and license
 
 See `CITATION.cff`. Released under the MIT License (`LICENSE`).
-Archived release DOI: *(to be added on Zenodo deposit)*.
+
+Archived on Zenodo:
+- Concept DOI (all versions, always resolves to latest): [10.5281/zenodo.21244544](https://doi.org/10.5281/zenodo.21244544)
+- Version DOI (v1.0.0, the release whose numbers match the manuscript): [10.5281/zenodo.21244545](https://doi.org/10.5281/zenodo.21244545)

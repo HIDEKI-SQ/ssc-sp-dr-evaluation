@@ -3,6 +3,8 @@ message: "If you use this software, please cite it as below."
 title: "SSC-SP: Semantic-spatial alignment and decomposed structural preservation for DR visualization evaluation"
 authors:
   - given-names: "Hideki"
-version: 1.0.0
+version: 1.0.1
+date-released: 2026-07-08
+doi: 10.5281/zenodo.21244544
 license: MIT
 repository-code: "https://github.com/HIDEKI-SQ/ssc-sp-dr-evaluation"
